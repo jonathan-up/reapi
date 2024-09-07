@@ -303,12 +303,13 @@ native rh_set_pause(const bool:st, const bool:host = true);
 /*
 * Checks if a specific entity is fully packed in a given frame for a host client.
 *
-* @param index      Client index for whom we are checking the entity.
+* @param host       Host index for whom we are checking the entity. (Host cannot be a fake client)
 * @param entity     Entity index to find in the table of entities for the given frame.
 * @param frame      Frame index where to look. Default is -1, which checks the previous frame.
 * @note             To check in the current frame, this native should be called at the end of the server frame.
 *
-* @return           Returns true if the entity is fully packed and ready to be sent to all clients in the given frame, otherwise false.
+* @return           Returns true if the entity is present in the host's outgoing entity table and
+*                   ready to be sent to all clients in the given frame, otherwise false.
 */
 native bool:rh_is_entity_fullpacked(const host, const entity, const frame = -1);
 
